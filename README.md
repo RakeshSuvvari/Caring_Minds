@@ -3,12 +3,12 @@
 Install the packages \
 `python3 -m pip install flask psycopg2-binary numpy scikit-learn`
 
-Run `CosineAlgo.py` to initiate API router on port `5000`. \
+Run `CosineAlgo.py` to initiate API router on port `5000`.
 
 API Method: `POST` \
 API Hit: `http://127.0.0.1:5000/match_caregivers` \
-Sample API Input (depends on the final questionnaire): \
-`
+Sample API Input (depends on the final questionnaire):
+```
 {
     "id": 1,
     "experience": 4,
@@ -18,10 +18,10 @@ Sample API Input (depends on the final questionnaire): \
     "cognitive_stage": 3,
     "location": "Austin"
 }
-`
+```
 
-Sample Output (depends on the final questionnaire): \
-`
+Sample Output (depends on the final questionnaire):
+```
 [
     {
         "caregiver_details": {
@@ -52,4 +52,4 @@ Sample Output (depends on the final questionnaire): \
         "similarity_score": 0.9621023987294833
     }
 ]
-`
+```
