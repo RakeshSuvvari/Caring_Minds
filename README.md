@@ -1,5 +1,6 @@
 # Caring_Minds
 
+
 Install the packages \
 `python3 -m pip install flask psycopg2-binary numpy scikit-learn`
 
@@ -53,3 +54,18 @@ Sample Output (depends on the final questionnaire):
     }
 ]
 ```
+************************************************************
+To setup and run frontend of the application:
+1. Ensure the following is installed in the system:
+	- [Node.js](https://nodejs.org/)	
+	- [npm](https://www.npmjs.com/) 
+2. Clone the repository:
+	 git clone https://git.txstate.edu/kgv34/Caring_Minds.git
+3. Navigate to the cloned folder 'Caring_Minds' and right-click to  'open in terminal' or 'open in git bash'
+4. then in the terminal, add the command:
+	- cd frontend\care-recipient-form
+5. install dependency by adding the command;
+	- npm install
+6. then add command to open the link:
+	- npm start
+***********************************************************

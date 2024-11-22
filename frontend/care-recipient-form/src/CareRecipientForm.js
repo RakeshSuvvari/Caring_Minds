@@ -3,7 +3,13 @@ import React, { useState } from 'react';
 function CareRecipientForm() {
   const [formData, setFormData] = useState({
     dementiaType: [],
-    symptoms: [],
+    //symptoms: [],
+    behaviouralSymptoms: [],
+    emotionalSymptoms:[],
+    lifestyleChanges:[],
+    movementSymptoms:[],
+    languageSymptoms:[],
+    otherSymptoms:[],
     dementiaStage: '',
     careType: [],
     genderPreference: '',
@@ -80,7 +86,7 @@ function CareRecipientForm() {
         {currentStep === 1 && (
           <>
           <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-          <h3>Please choose your gender</h3>
+          <h3>Select your gender</h3>
           <div
          style={{
          display: 'grid',
@@ -111,7 +117,10 @@ function CareRecipientForm() {
 </div>
     {/* Language preference*/ }
   <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-  <h3>Please choose your language preference</h3>
+  <h3>Select your language preference</h3>
+  <p style={{ fontStyle: 'italic', color: '#555' }}>
+    Select one or more language preference.
+  </p>
   <div
     style={{
       display: 'grid',
@@ -142,7 +151,7 @@ function CareRecipientForm() {
 </div>
 {/*Gender Preference*/}
 <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-  <h3>Please choose your gender preference</h3>
+  <h3>Select a preferred gender of the caregiver</h3>
   <div
     style={{
       display: 'grid',
@@ -196,7 +205,10 @@ function CareRecipientForm() {
           <>
  {/* Dementia Type Selection */}
 <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-  <h3>Please choose the type of dementia</h3>
+  <h3>Select the type of dementia</h3>
+  <p style={{ fontStyle: 'italic', color: '#555' }}>
+  Please select all types of dementia that apply to you or your loved ones.
+  </p>
   <div
     style={{
       display: 'grid',
@@ -231,8 +243,53 @@ function CareRecipientForm() {
   </div>
 </div>
 {/* Symptoms Selection */}
+{/* Behavioural symptoms */}
 <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-  <h3>Please choose the symptoms</h3>
+<h3>Select the symptoms</h3>
+  <p style={{ fontStyle: 'italic', color: '#555' }}>
+  Please select all the symptoms that apply to you or your loved ones.
+  </p>
+  <h4> Behavioural Symptoms</h4>
+  <div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr', // Two columns
+    gap: '10px', // Space between the options
+    justifyContent: 'center',
+    alignItems: 'center',
+  }}
+>
+  {[
+    'Mental decline',
+    'Difficulty thinking or understanding',
+    'Forgetfulness',
+    'Impulsive behaviour',
+    'Disorientation',
+    'Lack of consideration for others',
+    'Disorganised or illogical thinking',
+    'Compulsive behaviour',
+  ].map((symptom) => (
+    <div
+      key={symptom}
+      style={{
+        padding: '10px',
+        border: '2px solid',
+        borderColor: formData.behaviouralSymptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
+        backgroundColor: formData.behaviouralSymptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
+        borderRadius: '8px',
+        textAlign: 'center',
+        cursor: 'pointer',
+      }}
+      onClick={() => handleBoxToggle('behaviouralSymptoms', symptom)}
+    >
+      {symptom}
+    </div>
+  ))}
+</div>
+</div>
+{/*Emotional symptoms*/}
+<div style={{ textAlign: 'center', marginBottom: '15px' }}>
+  <h4>Emotional Symptoms</h4>
   <div
     style={{
       display: 'grid',
@@ -243,32 +300,185 @@ function CareRecipientForm() {
     }}
   >
     {[
-      "Alzheimer's Disease",
-      'Frontotemporal Dementia',
-      'Lewy Body Dementia',
-      'Vascular Dementia',
+      'Agitation',
+      'Difficulty regulating emotions',
+      'Wandering or getting lost',
+      'Loss of interest in activities or people',
+      'Delusions or paranoia',
+      'Apathy',
     ].map((symptom) => (
       <div
         key={symptom}
         style={{
           padding: '10px',
           border: '2px solid',
-          borderColor: formData.symptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
-          backgroundColor: formData.symptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
+          borderColor: formData.emotionalSymptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
+          backgroundColor: formData.emotionalSymptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
           borderRadius: '8px',
           textAlign: 'center',
           cursor: 'pointer',
         }}
-        onClick={() => handleBoxToggle('symptoms', symptom)}
+        onClick={() => handleBoxToggle('emotionalSymptoms', symptom)}
       >
         {symptom}
       </div>
     ))}
   </div>
 </div>
+{/*Lifestyle changes */}
+<div style={{ textAlign: 'center', marginBottom: '15px' }}>
+  <h4>Lifestyle Changes</h4>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr', // Two columns
+      gap: '10px', // Space between the options
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    {[
+      'Neglect of personal hygiene',
+      'Excessive sleep or insomnia',
+      'Changes in food preferences',
+      'Sedentary or inactivity',
+    ].map((change) => (
+      <div
+        key={change}
+        style={{
+          padding: '10px',
+          border: '2px solid',
+          borderColor: formData.lifestyleChanges.includes(change) ? '#007BFF' : '#ccc', // Highlight selected
+          backgroundColor: formData.lifestyleChanges.includes(change) ? '#E0F7FA' : '#fff', // Highlight background
+          borderRadius: '8px',
+          textAlign: 'center',
+          cursor: 'pointer',
+        }}
+        onClick={() => handleBoxToggle('lifestyleChanges', change)}
+      >
+        {change}
+      </div>
+    ))}
+  </div>
+</div>
+{/*Movement Symptoms */}
+<div style={{ textAlign: 'center', marginBottom: '15px' }}>
+  <h4>Movement Symptoms</h4>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr', // Two columns
+      gap: '10px', // Space between the options
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    {[
+      'Muscle stiffness or rigidity',
+      'Restless leg syndrome',
+      'Shuffling walk or slow movement',
+      'Difficulty combining muscle movements',
+      'Tremors at rest',
+      'Balance issues and falls',
+    ].map((symptom) => (
+      <div
+        key={symptom}
+        style={{
+          padding: '10px',
+          border: '2px solid',
+          borderColor: formData.movementSymptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
+          backgroundColor: formData.movementSymptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
+          borderRadius: '8px',
+          textAlign: 'center',
+          cursor: 'pointer',
+        }}
+        onClick={() => handleBoxToggle('movementSymptoms', symptom)}
+      >
+        {symptom}
+      </div>
+    ))}
+  </div>
+</div>
+
+{/*Language Symptoms */}
+<div style={{ textAlign: 'center', marginBottom: '15px' }}>
+  <h4>Language Symptoms</h4>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr', // Two columns
+      gap: '10px', // Space between the options
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    {[
+      'Speaking slowly',
+      'Gradual loss of vocabulary',
+      'Difficulty making correct sounds',
+      'Mixing up word order or using incorrect words',
+    ].map((symptom) => (
+      <div
+        key={symptom}
+        style={{
+          padding: '10px',
+          border: '2px solid',
+          borderColor: formData.languageSymptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
+          backgroundColor: formData.languageSymptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
+          borderRadius: '8px',
+          textAlign: 'center',
+          cursor: 'pointer',
+        }}
+        onClick={() => handleBoxToggle('languageSymptoms', symptom)}
+      >
+        {symptom}
+      </div>
+    ))}
+  </div>
+</div>
+{/*Other symptoms */}
+<div style={{ textAlign: 'center', marginBottom: '15px' }}>
+  <h4>Other Symptoms</h4>
+  <div
+    style={{
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr', // Two columns
+      gap: '10px', // Space between the options
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    {[
+      'Visual hallucinations',
+      'Urinary incontinence',
+      'Sensitivity to heat or cold',
+      'Similar handwriting',
+      'Dizziness or fainting',
+      'Anxiety, depression or apathy',
+    ].map((symptom) => (
+      <div
+        key={symptom}
+        style={{
+          padding: '10px',
+          border: '2px solid',
+          borderColor: formData.otherSymptoms.includes(symptom) ? '#007BFF' : '#ccc', // Highlight selected
+          backgroundColor: formData.otherSymptoms.includes(symptom) ? '#E0F7FA' : '#fff', // Highlight background
+          borderRadius: '8px',
+          textAlign: 'center',
+          cursor: 'pointer',
+        }}
+        onClick={() => handleBoxToggle('otherSymptoms', symptom)}
+      >
+        {symptom}
+      </div>
+    ))}
+  </div>
+</div>
+
+
 {/* Dementia Stage Selection */}
 <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-  <h3>Please choose the dementia stage</h3>
+  <h3>Select the dementia stage</h3>
   <div
     style={{
       display: 'grid',
@@ -326,7 +536,11 @@ function CareRecipientForm() {
          
 {/* Care Type Selection */}
 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-  <h3>Choose type of care</h3>
+  <h3>
+    select the type of care</h3>
+    <p style={{ fontStyle: 'italic', color: '#555' }}>
+  Please select all types of care required for you or your loved one.
+</p>
   <div
     style={{
       display: 'grid',
@@ -404,7 +618,7 @@ function CareRecipientForm() {
 </div>
 {/* Availability Selection */}
 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-  <h3>Please choose availability of caregiver</h3>
+  <h3>Select availability of caregiver</h3>
   <div
     style={{
       display: 'grid',
