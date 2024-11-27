@@ -1,120 +1,143 @@
 from flask import Flask, request, jsonify
 import psycopg2
 import numpy as np
-import json
+from flask_cors import CORS
 from sklearn.metrics.pairwise import cosine_similarity
 
 app = Flask(__name__)
+CORS(app)
 
 # PostgreSQL Database configuration
 DB_CONFIG = {
-    'dbname': 'postgres',
-    'user': 'postgres',
-    'password': 'rakesh33',
-    'host': 'localhost',
-    'port': '5432'
+  'dbname': 'postgres',
+  'user': 'postgres',
+  'password': 'rakesh33',
+  'host': 'localhost',
+  'port': '5432'
 }
 
 # Connect to PostgreSQL Database
 def get_db_connection():
-    conn = psycopg2.connect(**DB_CONFIG)
-    return conn
+  conn = psycopg2.connect(**DB_CONFIG)
+  return conn
 
 # Helper function to vectorize profiles based on predefined attributes
 def create_profile_vector(profile, attributes):
-    vector = []
-    for attribute in attributes:
-        if attribute == 'skills':  # Handle skills as binary
-            vector.extend([1 if skill in profile['skills'] else 0 for skill in attributes['skills']])
-        elif attribute == 'location':  # Handle location with one-hot encoding
-            vector.extend([1 if profile['location'] == loc else 0 for loc in attributes['location']])
-        else:
-            vector.append(profile[attribute])  # Directly append numeric attributes (experience, cognitive_stage, etc.)
-    return np.array(vector)
+  vector = []
+  for attribute, options in attributes.items():
+    if attribute in ['skills', 'language', 'dementia_type', 'symptoms', 'care_type']:
+      # Multi-hot encoding for multi-select attributes
+      vector.extend([1 if option in profile.get(attribute, []) else 0 for option in options])
+    elif attribute == 'dementia_stage':
+      # Map dementia stage to caregiver experience
+      stage_to_experience = {'Mild': 2, 'Moderate': 3, 'Severe': 5}
+      vector.append(stage_to_experience.get(profile.get(attribute, 'Mild'), 2))
+    elif attribute == 'availability' or attribute == 'gender' or attribute == 'preferred_gender':
+      # One-hot encoding for single-select attributes
+      vector.extend([1 if profile.get(attribute) == option else 0 for option in options])
+    else:
+      # Append numeric attributes directly
+      vector.append(profile.get(attribute, 0))
+  return np.array(vector)
 
 
 # Cosine similarity function
 def calculate_cosine_similarity(caregiver_vector, carerecipient_vector):
-    return cosine_similarity([caregiver_vector], [carerecipient_vector])[0][0]
+  return cosine_similarity([caregiver_vector], [carerecipient_vector])[0][0]
 
 # API route to match caregivers based on carerecipient requirements
 @app.route('/match_caregivers', methods=['POST'])
 def match_caregivers():
-    # Parse carerecipient's requirements from request
-    care_recipient_data = request.json
-    print("care_recipient_data", care_recipient_data)
-    # data  = json.loads(str(care_recipient_data))
-    # print("data", data)
-    carerecipient_vector = create_profile_vector(care_recipient_data, ATTRIBUTE_LIST)
-    
-    # Connect to the database and fetch caregiver profiles
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM caregivers")  # Modify this query based on your table structure
-    caregivers = cursor.fetchall()
+  # Parse care recipient's requirements from request
+  care_recipient_data = request.json
+  carerecipient_vector = create_profile_vector(care_recipient_data, ATTRIBUTE_LIST)
 
-    # Define the column names as keys
-    columns = ['id', 'experience', 'skills', 'location', 'cognitive_stage']
+  # Connect to the database and fetch caregiver profiles
+  conn = get_db_connection()
+  cursor = conn.cursor()
+  cursor.execute("SELECT * FROM caregivers")
+  caregivers = cursor.fetchall()
 
-    # Convert the list of tuples to a list of dictionaries
-    caregivers = [dict(zip(columns, record)) for record in caregivers]
-    print("caregivers", caregivers)
-#     caregivers = [
-#     {'id': 1, 'experience': 5, 'skills': ['mobility assistance', 'medication'], 'location': 'Austin', 'cognitive_stage': 3},
-#     {'id': 2, 'experience': 3, 'skills': ['companionship', 'mobility assistance'], 'location': 'San Marcos', 'cognitive_stage': 2}
-# ]
+  # Define the column names to match table structure
+  columns = ['id', 'gender', 'language', 'preferred_gender', 'dementia_type', 'symptoms', 
+            'experience', 'care_type', 'availability']
 
-    
-    caregiver_profiles = []
-    for caregiver in caregivers:
-        # Assume the caregiver profile structure matches the care_recipient_data's attribute keys
-        print("caregiver", caregiver)
-        # caregiver_profile = {
-        #     'id': caregiver[0],  # Adjust index based on your database table structure
-        #     'experience': caregiver[1],
-        #     'skills': caregiver[2].split(','),  # Assuming skills are stored as comma-separated strings
-        #     'location': caregiver[3],
-        #     'cognitive_stage': caregiver[4],
-        # }
-        caregiver_profile = {
-          'id': caregiver['id'],
-          'experience': caregiver['experience'],
-          'skills': caregiver['skills'],
-          'location': caregiver['location'],
-          'cognitive_stage': caregiver['cognitive_stage']
-        }
-        caregiver_profiles.append(caregiver_profile)
-    
-    # Compute similarity for each caregiver
-    matches = []
-    for caregiver in caregiver_profiles:
-        caregiver_vector = create_profile_vector(caregiver, ATTRIBUTE_LIST)
-        similarity_score = calculate_cosine_similarity(caregiver_vector, carerecipient_vector)
-        matches.append((caregiver, similarity_score))
+  # Convert caregivers to a list of dictionaries
+  caregivers = [dict(zip(columns, record)) for record in caregivers]
 
-    # Sort caregivers by similarity score in descending order
-    matches.sort(key=lambda x: x[1], reverse=True)
+  # Prepare caregiver profiles for cosine similarity calculation
+  caregiver_profiles = []
+  for caregiver in caregivers:
+    caregiver_profile = {
+      'id': caregiver['id'],
+      'gender': caregiver['gender'],
+      'language': caregiver['language'],
+      'preferred_gender': caregiver['preferred_gender'],
+      'dementia_type': caregiver['dementia_type'],
+      'symptoms': caregiver['symptoms'],
+      'experience': caregiver['experience'],
+      'care_type': caregiver['care_type'],
+      'availability': caregiver['availability']
+    }
+    caregiver_profiles.append(caregiver_profile)
 
-    # Format the output to include only caregiver information and similarity score
-    result = [{
-        'caregiver_id': match[0]['id'],
-        'similarity_score': match[1],
-        'caregiver_details': match[0]
-    } for match in matches]
+  # Compute similarity for each caregiver
+  matches = []
+  for caregiver in caregiver_profiles:
+    caregiver_vector = create_profile_vector(caregiver, ATTRIBUTE_LIST)
+    similarity_score = calculate_cosine_similarity(caregiver_vector, carerecipient_vector)
+    matches.append((caregiver, similarity_score))
 
-    # Close database connection
-    cursor.close()
-    conn.close()
+  # Sort caregivers by similarity score in descending order
+  matches.sort(key=lambda x: x[1], reverse=True)
 
-    return jsonify(result)
+  # Format the output to include only caregiver information and similarity score
+  result = [{
+    'caregiver_id': match[0]['id'],
+    'similarity_score': match[1],
+    'caregiver_details': match[0]
+  } for match in matches]
+
+  # Close database connection
+  cursor.close()
+  conn.close()
+
+  return jsonify(result)
 
 # Define attributes for vectorization
 ATTRIBUTE_LIST = {
-    'experience': 'experience',  # Numeric attribute
-    'skills': ['mobility assistance', 'medication', 'companionship'],  # Example list of skills
-    'location': 'location',
-    'cognitive_stage': 'cognitive_stage'  # Numeric attribute
-    
+  'gender': ['Male', 'Female', 'Non-binary', 'No Preference'],  # One-hot encoded
+  'language': ['English', 'Spanish', 'French', 'No Preference'],  # Multi-hot encoded
+  'preferred_gender': ['Male', 'Female', 'Non-binary', 'No Preference'],  # One-hot encoded
+  'dementia_type': [
+    "Alzheimer's Disease",
+    'Frontotemporal Dementia',
+    'Lewy Body Dementia',
+    'Vascular Dementia'
+  ],  # Multi-hot encoded
+  'symptoms': [  # Multi-hot encoded for all symptom categories
+    'Mental decline', 'Difficulty thinking or understanding', 'Forgetfulness',
+    'Impulsive behaviour', 'Disorientation', 'Lack of consideration for others',
+    'Disorganised or illogical thinking', 'Compulsive behaviour', 'Agitation',
+    'Difficulty regulating emotions', 'Wandering or getting lost',
+    'Loss of interest in activities or people', 'Delusions or paranoia', 'Apathy',
+    'Neglect of personal hygiene', 'Excessive sleep or insomnia',
+    'Changes in food preferences', 'Sedentary or inactivity',
+    'Muscle stiffness or rigidity', 'Restless leg syndrome',
+    'Shuffling walk or slow movement', 'Difficulty combining muscle movements',
+    'Tremors at rest', 'Balance issues and falls', 'Speaking slowly',
+    'Gradual loss of vocabulary', 'Difficulty making correct sounds',
+    'Mixing up word order or using incorrect words', 'Visual hallucinations',
+    'Urinary incontinence', 'Sensitivity to heat or cold', 'Similar handwriting',
+    'Dizziness or fainting', 'Anxiety, depression or apathy'
+  ],
+  'dementia_stage': ['Mild', 'Moderate', 'Severe'],  # Mapped to experience
+  'care_type': [
+    'Medication Management', 'Mobility Assistance', 'Daily Living Support',
+    'Cognitive Stimulation Activities', 'Specialised Therapies',
+    'Meal Preparation and Feeding Assistance', 'In-home Medical Care'
+  ],  # Multi-hot encoded
+  'availability': ['Full Time', 'Part Time', '24/7']  # One-hot encoded
 }
 
 if __name__ == '__main__':
