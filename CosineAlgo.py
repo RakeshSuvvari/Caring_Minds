@@ -1,11 +1,6 @@
-from flask import Flask, request, jsonify
 import psycopg2
 import numpy as np
-from flask_cors import CORS
 from sklearn.metrics.pairwise import cosine_similarity
-
-app = Flask(__name__)
-CORS(app)
 
 # PostgreSQL Database configuration
 DB_CONFIG = {
@@ -45,11 +40,8 @@ def create_profile_vector(profile, attributes):
 def calculate_cosine_similarity(caregiver_vector, carerecipient_vector):
   return cosine_similarity([caregiver_vector], [carerecipient_vector])[0][0]
 
-# API route to match caregivers based on carerecipient requirements
-@app.route('/match_caregivers', methods=['POST'])
-def match_caregivers():
+def match_caregivers(care_recipient_data):
   # Parse care recipient's requirements from request
-  care_recipient_data = request.json
   carerecipient_vector = create_profile_vector(care_recipient_data, ATTRIBUTE_LIST)
 
   # Connect to the database and fetch caregiver profiles
@@ -102,7 +94,7 @@ def match_caregivers():
   cursor.close()
   conn.close()
 
-  return jsonify(result)
+  return result
 
 # Define attributes for vectorization
 ATTRIBUTE_LIST = {
@@ -140,5 +132,3 @@ ATTRIBUTE_LIST = {
   'availability': ['Full Time', 'Part Time', '24/7']  # One-hot encoded
 }
 
-if __name__ == '__main__':
-    app.run(debug=True)
