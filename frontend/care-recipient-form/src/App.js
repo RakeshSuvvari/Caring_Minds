@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import CareRecipientForm from './CareRecipientForm';
+import React from "react";
+import "./App.css";
+import CareRecipientForm from "./CareRecipientForm";
 
 function App() {
   return (
@@ -9,14 +9,14 @@ function App() {
     //   <CareRecipientForm />
     // </div>
     <div className="App">
-    <header className="App-header" style={{textAlign: 'center'}}>
-      <h1>Personalized Dementia Care Information</h1>
-    </header>
-  
-    <div className="container">
-      <CareRecipientForm />
+      <header className="App-header" style={{ textAlign: "center" }}>
+        <h1>Personalized Dementia Care Information</h1>
+      </header>
+
+      <div className="container">
+        <CareRecipientForm />
+      </div>
     </div>
-  </div>
   );
 }
 

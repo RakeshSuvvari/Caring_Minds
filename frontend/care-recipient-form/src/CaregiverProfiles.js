@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './App.css';
+import "./App.css";
 
 function CaregiverProfiles({ profiles }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -8,10 +8,17 @@ function CaregiverProfiles({ profiles }) {
   const totalPages = Math.ceil(profiles.length / profilesPerPage); // Calculate total pages
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
-  const currentProfiles = profiles.slice(indexOfFirstProfile, indexOfLastProfile);
+  const currentProfiles = profiles.slice(
+    indexOfFirstProfile,
+    indexOfLastProfile,
+  );
 
   if (profiles.length === 0) {
-    return <p style={{ textAlign: "center", fontSize: "18px" }}>No caregivers matched your requirements.</p>;
+    return (
+      <p style={{ textAlign: "center", fontSize: "18px" }}>
+        No caregivers matched your requirements.
+      </p>
+    );
   }
 
   return (
@@ -49,13 +56,33 @@ function CaregiverProfiles({ profiles }) {
               <div className="similarity-score">
                 Similarity Score: {profile.similarity_score.toFixed(2)}
               </div>
-              <p><strong>Gender:</strong> {profile.caregiver_details.gender}</p>
-              <p><strong>Language:</strong> {profile.caregiver_details.language.join(", ")}</p>
-              <p><strong>Preferred Gender:</strong> {profile.caregiver_details.preferred_gender}</p>
-              <p><strong>Dementia Types:</strong> {profile.caregiver_details.dementia_type.join(", ")}</p>
-              <p><strong>Symptoms:</strong> {profile.caregiver_details.symptoms.join(", ")}</p>
-              <p><strong>Care Types:</strong> {profile.caregiver_details.care_type.join(", ")}</p>
-              <p><strong>Availability:</strong> {profile.caregiver_details.availability}</p>
+              <p>
+                <strong>Gender:</strong> {profile.caregiver_details.gender}
+              </p>
+              <p>
+                <strong>Language:</strong>{" "}
+                {profile.caregiver_details.language.join(", ")}
+              </p>
+              <p>
+                <strong>Preferred Gender:</strong>{" "}
+                {profile.caregiver_details.preferred_gender}
+              </p>
+              <p>
+                <strong>Dementia Types:</strong>{" "}
+                {profile.caregiver_details.dementia_type.join(", ")}
+              </p>
+              <p>
+                <strong>Symptoms:</strong>{" "}
+                {profile.caregiver_details.symptoms.join(", ")}
+              </p>
+              <p>
+                <strong>Care Types:</strong>{" "}
+                {profile.caregiver_details.care_type.join(", ")}
+              </p>
+              <p>
+                <strong>Availability:</strong>{" "}
+                {profile.caregiver_details.availability}
+              </p>
             </div>
           </div>
         ))}
@@ -84,7 +111,11 @@ function CaregiverProfiles({ profiles }) {
           Page {currentPage} / {totalPages}
         </span>
         <button
-          onClick={() => setCurrentPage((prev) => (indexOfLastProfile < profiles.length ? prev + 1 : prev))}
+          onClick={() =>
+            setCurrentPage((prev) =>
+              indexOfLastProfile < profiles.length ? prev + 1 : prev,
+            )
+          }
           disabled={indexOfLastProfile >= profiles.length}
           style={{
             display: "inline-block",
@@ -95,7 +126,8 @@ function CaregiverProfiles({ profiles }) {
             fontWeight: "bold",
             border: "none",
             borderRadius: "5px",
-            cursor: indexOfLastProfile >= profiles.length ? "not-allowed" : "pointer",
+            cursor:
+              indexOfLastProfile >= profiles.length ? "not-allowed" : "pointer",
             marginLeft: "10px",
             opacity: indexOfLastProfile >= profiles.length ? 0.6 : 1,
           }}
@@ -108,4 +140,3 @@ function CaregiverProfiles({ profiles }) {
 }
 
 export default CaregiverProfiles;
-
