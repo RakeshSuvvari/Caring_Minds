@@ -1,60 +1,5 @@
 # Caring_Minds
 
-
-Install the packages \
-`python3 -m pip install flask psycopg2-binary numpy scikit-learn`
-
-Run `CosineAlgo.py` to initiate API router on port `5000`.
-
-API Method: `POST` \
-API Hit: `http://127.0.0.1:5000/match_caregivers` \
-Sample API Input (depends on the final questionnaire):
-```
-{
-    "id": 1,
-    "experience": 4,
-    "skills": [
-        "mobility assistance"
-    ],
-    "cognitive_stage": 3,
-    "location": "Austin"
-}
-```
-
-Sample Output (depends on the final questionnaire):
-```
-[
-    {
-        "caregiver_details": {
-            "cognitive_stage": 3,
-            "experience": 5,
-            "id": 1,
-            "location": "Austin",
-            "skills": [
-                "mobility assistance",
-                "medication"
-            ]
-        },
-        "caregiver_id": 1,
-        "similarity_score": 0.9805806756909203
-    },
-    {
-        "caregiver_details": {
-            "cognitive_stage": 2,
-            "experience": 3,
-            "id": 2,
-            "location": "San Marcos",
-            "skills": [
-                "companionship",
-                "mobility assistance"
-            ]
-        },
-        "caregiver_id": 2,
-        "similarity_score": 0.9621023987294833
-    }
-]
-```
-************************************************************
 To setup and run frontend of the application:
 1. Ensure the following is installed in the system:
 	- [Node.js](https://nodejs.org/)	
@@ -65,7 +10,118 @@ To setup and run frontend of the application:
 4. then in the terminal, add the command:
 	- cd frontend\care-recipient-form
 5. install dependency by adding the command;
+   	- rm -rf node_modules
+	- rm -rf package-lock.json
+ 	- npm install react-scripts 
 	- npm install
-6. then add command to open the link:
+7. then add command to open the link:
 	- npm start
 ***********************************************************
+
+To setup and run backend of the application:
+Install the packages \
+`python3 -m pip install flask psycopg2-binary numpy scikit-learn`
+
+Run `CosineAlgo.py` to initiate API router on port `5000`.
+
+API Method: `POST` \
+API Hit: `http://127.0.0.1:5000/match_caregivers` \
+Sample API Input:
+```
+{
+    "gender": "Female",
+    "language": ["English", "Spanish"],
+    "preferred_gender": "Male",
+    "dementia_type": ["Alzheimer's Disease", "Vascular Dementia"],
+    "symptoms": ["Mental decline", "Agitation", "Muscle stiffness or rigidity"],
+    "dementia_stage": "Moderate",
+    "care_type": ["Medication Management", "Daily Living Support"],
+    "availability": "Full Time"
+}
+```
+
+Sample Output:
+```
+[
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Medication Management",
+                "Mobility Assistance"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 3,
+            "gender": "Female",
+            "id": 1,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "Male",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness"
+            ]
+        },
+        "caregiver_id": 1,
+        "similarity_score": 0.8451542547285165
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Medication Management",
+                "Mobility Assistance"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 3,
+            "gender": "Female",
+            "id": 5,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "Male",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness"
+            ]
+        },
+        "caregiver_id": 5,
+        "similarity_score": 0.8451542547285165
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Daily Living Support"
+            ],
+            "dementia_type": [
+                "Lewy Body Dementia"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 18,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "No Preference",
+            "symptoms": [
+                "Gradual loss of vocabulary",
+                "Muscle stiffness or rigidity"
+            ]
+        },
+        "caregiver_id": 18,
+        "similarity_score": 0.7262730392025629
+    }
+]
+```
+************************************************************
