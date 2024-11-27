@@ -4,10 +4,19 @@ import CareRecipientForm from './CareRecipientForm';
 
 function App() {
   return (
+    // <div className="App">
+    //   <h1> Personalized Dementia Care Information</h1>
+    //   <CareRecipientForm />
+    // </div>
     <div className="App">
-      <h1> Personalized Dementia Care Information</h1>
+    <header className="App-header" style={{textAlign: 'center'}}>
+      <h1>Personalized Dementia Care Information</h1>
+    </header>
+  
+    <div className="container">
       <CareRecipientForm />
     </div>
+  </div>
   );
 }
 
