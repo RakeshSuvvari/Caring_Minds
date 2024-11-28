@@ -16,13 +16,19 @@ To setup and run frontend of the application:
 	- npm install
 7. then add command to open the link:
 	- npm start
+
+***********************************************************
+
+A temporary PostgreSQL database was hosted on https://render.com/ \
+Database is used for saving the profiles of the care givers.
+
 ***********************************************************
 
 To setup and run backend of the application:
 Install the packages \
 `python3 -m pip install flask psycopg2-binary numpy scikit-learn`
 
-Run `CosineAlgo.py` to initiate API router on port `5000`.
+Run `app.py` to initiate API router on port `5000`.
 
 API Method: `POST` \
 API Hit: `http://127.0.0.1:5000/match_caregivers` \
