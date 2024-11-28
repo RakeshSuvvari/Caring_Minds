@@ -73,3 +73,107 @@ VALUES
  ARRAY['Disorientation', 'Difficulty regulating emotions'], 3, ARRAY['In-home Medical Care'], 'Full Time'),
 ('Male', ARRAY['English', 'Spanish'], 'Male', ARRAY['Alzheimer''s Disease'], 
  ARRAY['Wandering or getting lost', 'Compulsive behaviour'], 4, ARRAY['Specialised Therapies', 'Cognitive Stimulation Activities'], '24/7')
+
+
+
+INSERT INTO caregivers (gender, language, preferred_gender, dementia_type, symptoms, experience, care_type, availability)
+VALUES 
+-- Record 1
+('Female', ARRAY['English', 'Spanish'], 'No Preference', ARRAY['Alzheimer''s Disease', 'Vascular Dementia'], 
+ ARRAY['Mental decline', 'Forgetfulness', 'Disorientation', 'Agitation', 'Difficulty regulating emotions', 'Neglect of personal hygiene', 'Muscle stiffness or rigidity', 'Speaking slowly', 'Visual hallucinations'], 
+ 5, ARRAY['Medication Management', 'Cognitive Stimulation Activities', 'In-home Medical Care'], 'Full Time'),
+ 
+-- Record 2
+('Male', ARRAY['English'], 'Female', ARRAY['Lewy Body Dementia', 'Frontotemporal Dementia'], 
+ ARRAY['Disorganised or illogical thinking', 'Compulsive behaviour', 'Apathy', 'Changes in food preferences', 'Shuffling walk or slow movement', 'Tremors at rest', 'Gradual loss of vocabulary'], 
+ 4, ARRAY['Daily Living Support', 'Mobility Assistance'], 'Part Time'),
+ 
+-- Record 3
+('Non-binary', ARRAY['English', 'French'], 'No Preference', ARRAY['Vascular Dementia'], 
+ ARRAY['Impulsive behaviour', 'Delusions or paranoia', 'Excessive sleep or insomnia', 'Balance issues and falls', 'Difficulty making correct sounds', 'Urinary incontinence'], 
+ 3, ARRAY['Specialised Therapies', 'Cognitive Stimulation Activities'], '24/7'),
+ 
+-- Record 4
+('Female', ARRAY['Spanish'], 'Male', ARRAY['Alzheimer''s Disease', 'Lewy Body Dementia'], 
+ ARRAY['Mental decline', 'Difficulty thinking or understanding', 'Wandering or getting lost', 'Disorientation', 'Neglect of personal hygiene', 'Muscle stiffness or rigidity', 'Speaking slowly', 'Sensitivity to heat or cold'], 
+ 5, ARRAY['Meal Preparation and Feeding Assistance', 'In-home Medical Care'], 'Full Time'),
+ 
+-- Record 5
+('Male', ARRAY['English'], 'Female', ARRAY['Vascular Dementia', 'Frontotemporal Dementia'], 
+ ARRAY['Forgetfulness', 'Disorganised or illogical thinking', 'Difficulty regulating emotions', 'Sedentary or inactivity', 'Tremors at rest', 'Mixing up word order or using incorrect words'], 
+ 4, ARRAY['Daily Living Support', 'Mobility Assistance'], 'Part Time'),
+
+-- Record 6
+('Female', ARRAY['English', 'Spanish'], 'No Preference', ARRAY['Alzheimer''s Disease'], 
+ ARRAY['Mental decline', 'Compulsive behaviour', 'Loss of interest in activities or people', 'Shuffling walk or slow movement', 'Anxiety, depression or apathy'], 
+ 5, ARRAY['Cognitive Stimulation Activities', 'Specialised Therapies'], 'Full Time'),
+
+-- Record 7
+('Male', ARRAY['French'], 'Female', ARRAY['Lewy Body Dementia'], 
+ ARRAY['Forgetfulness', 'Agitation', 'Difficulty regulating emotions', 'Muscle stiffness or rigidity', 'Speaking slowly', 'Sensitivity to heat or cold', 'Similar handwriting'], 
+ 3, ARRAY['Daily Living Support', 'Mobility Assistance'], '24/7'),
+
+-- Record 8
+('Female', ARRAY['English', 'Spanish'], 'No Preference', ARRAY['Vascular Dementia'], 
+ ARRAY['Mental decline', 'Impulsive behaviour', 'Wandering or getting lost', 'Difficulty combining muscle movements', 'Gradual loss of vocabulary', 'Dizziness or fainting'], 
+ 4, ARRAY['Medication Management', 'Mobility Assistance'], 'Full Time'),
+
+-- Record 9
+('Male', ARRAY['Spanish'], 'Male', ARRAY['Frontotemporal Dementia'], 
+ ARRAY['Forgetfulness', 'Disorientation', 'Delusions or paranoia', 'Balance issues and falls', 'Difficulty making correct sounds'], 
+ 5, ARRAY['In-home Medical Care', 'Daily Living Support'], 'Part Time'),
+
+-- Record 10
+('Non-binary', ARRAY['English'], 'No Preference', ARRAY['Alzheimer''s Disease', 'Lewy Body Dementia'], 
+ ARRAY['Compulsive behaviour', 'Loss of interest in activities or people', 'Neglect of personal hygiene', 'Tremors at rest', 'Visual hallucinations'], 
+ 4, ARRAY['Specialised Therapies', 'Cognitive Stimulation Activities'], 'Full Time'),
+
+-- Record 11
+('Female', ARRAY['English', 'French'], 'Female', ARRAY['Vascular Dementia'], 
+ ARRAY['Mental decline', 'Forgetfulness', 'Wandering or getting lost', 'Changes in food preferences', 'Shuffling walk or slow movement', 'Difficulty combining muscle movements'], 
+ 5, ARRAY['Medication Management', 'In-home Medical Care'], 'Part Time'),
+
+-- Record 12
+('Male', ARRAY['Spanish', 'English'], 'No Preference', ARRAY['Lewy Body Dementia', 'Alzheimer''s Disease'], 
+ ARRAY['Disorganised or illogical thinking', 'Apathy', 'Excessive sleep or insomnia', 'Difficulty combining muscle movements', 'Mixing up word order or using incorrect words'], 
+ 4, ARRAY['Daily Living Support', 'Specialised Therapies'], 'Full Time'),
+
+-- Record 13
+('Non-binary', ARRAY['French'], 'Female', ARRAY['Frontotemporal Dementia'], 
+ ARRAY['Impulsive behaviour', 'Compulsive behaviour', 'Loss of interest in activities or people', 'Shuffling walk or slow movement', 'Speaking slowly'], 
+ 3, ARRAY['Mobility Assistance', 'Cognitive Stimulation Activities'], '24/7'),
+
+-- Record 14
+('Female', ARRAY['English', 'Spanish'], 'Male', ARRAY['Vascular Dementia'], 
+ ARRAY['Mental decline', 'Disorientation', 'Agitation', 'Muscle stiffness or rigidity', 'Dizziness or fainting'], 
+ 5, ARRAY['In-home Medical Care', 'Daily Living Support'], 'Full Time'),
+
+-- Record 15
+('Male', ARRAY['English'], 'No Preference', ARRAY['Alzheimer''s Disease', 'Lewy Body Dementia'], 
+ ARRAY['Forgetfulness', 'Delusions or paranoia', 'Changes in food preferences', 'Balance issues and falls'], 
+ 4, ARRAY['Cognitive Stimulation Activities', 'Mobility Assistance'], 'Part Time'),
+
+-- Record 16
+('Female', ARRAY['Spanish'], 'Female', ARRAY['Vascular Dementia'], 
+ ARRAY['Disorganised or illogical thinking', 'Difficulty regulating emotions', 'Neglect of personal hygiene', 'Tremors at rest'], 
+ 3, ARRAY['Specialised Therapies', 'Meal Preparation and Feeding Assistance'], 'Full Time'),
+
+-- Record 17
+('Non-binary', ARRAY['English', 'French'], 'No Preference', ARRAY['Frontotemporal Dementia'], 
+ ARRAY['Mental decline', 'Forgetfulness', 'Loss of interest in activities or people', 'Gradual loss of vocabulary'], 
+ 4, ARRAY['Daily Living Support', 'In-home Medical Care'], 'Part Time'),
+
+-- Record 18
+('Male', ARRAY['English'], 'Female', ARRAY['Lewy Body Dementia'], 
+ ARRAY['Disorientation', 'Apathy', 'Wandering or getting lost', 'Difficulty combining muscle movements'], 
+ 5, ARRAY['Mobility Assistance', 'Specialised Therapies'], '24/7'),
+
+-- Record 19
+('Female', ARRAY['English', 'Spanish'], 'Male', ARRAY['Alzheimer''s Disease'], 
+ ARRAY['Compulsive behaviour', 'Changes in food preferences', 'Shuffling walk or slow movement', 'Mixing up word order or using incorrect words'], 
+ 4, ARRAY['Daily Living Support', 'Cognitive Stimulation Activities'], 'Full Time'),
+
+-- Record 20
+('Male', ARRAY['English'], 'No Preference', ARRAY['Vascular Dementia'], 
+ ARRAY['Mental decline', 'Disorganised or illogical thinking', 'Loss of interest in activities or people', 'Difficulty making correct sounds'], 
+ 3, ARRAY['In-home Medical Care', 'Specialised Therapies'], 'Part Time');

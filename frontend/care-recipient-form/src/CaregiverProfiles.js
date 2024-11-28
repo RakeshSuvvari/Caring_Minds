@@ -56,9 +56,9 @@ function CaregiverProfiles({ profiles }) {
               <div className="similarity-score">
                 Similarity Score: {profile.similarity_score.toFixed(2)}
               </div>
-              <p>
+              {/* <p>
                 <strong>Gender:</strong> {profile.caregiver_details.gender}
-              </p>
+              </p> */}
               <p>
                 <strong>Language:</strong>{" "}
                 {profile.caregiver_details.language.join(", ")}
