@@ -1,20 +1,6 @@
-import psycopg2
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-
-# PostgreSQL Database configuration
-DB_CONFIG = {
-  'dbname': 'postgres',
-  'user': 'postgres',
-  'password': 'rakesh33',
-  'host': 'localhost',
-  'port': '5432'
-}
-
-# Connect to PostgreSQL Database
-def get_db_connection():
-  conn = psycopg2.connect(**DB_CONFIG)
-  return conn
+from db import get_db_connection
 
 # Helper function to vectorize profiles based on predefined attributes
 def create_profile_vector(profile, attributes):
