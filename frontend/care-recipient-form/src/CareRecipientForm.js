@@ -51,6 +51,11 @@ function CareRecipientForm() {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
+  const handlePrevious = (e) => {
+    e.preventDefault();
+    setCurrentStep((prevStep) => Math.max(prevStep - 1, 1));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Final Form Data Submitted:", formData);
@@ -71,19 +76,6 @@ function CareRecipientForm() {
       setLoading(false); // Reset loading state
     }
   };
-
-  const isSelected = (field, value) => formData[field].includes(value);
-
-  const boxStyle = (field, value) => ({
-    padding: "10px",
-    margin: "5px",
-    border: isSelected(field, value) ? "2px solid #007BFF" : "2px solid #ccc",
-    borderRadius: "5px",
-    backgroundColor: isSelected(field, value) ? "#007BFF" : "#f9f9f9",
-    color: isSelected(field, value) ? "#fff" : "#333",
-    cursor: "pointer",
-    textAlign: "center",
-  });
 
   return (
     <div>
@@ -228,7 +220,7 @@ function CareRecipientForm() {
                     )}
                   </div>
                 </div>
-                <button
+                {/* <button
                   onClick={handleNext}
                   style={{
                     display: "block",
@@ -244,7 +236,7 @@ function CareRecipientForm() {
                   }}
                 >
                   Next
-                </button>
+                </button> */}
               </>
             )}
 
@@ -586,7 +578,7 @@ function CareRecipientForm() {
                   </div>
                 </div>
 
-                <button
+                {/* <button
                   onClick={handleNext}
                   style={{
                     display: "block",
@@ -602,7 +594,7 @@ function CareRecipientForm() {
                   }}
                 >
                   Next
-                </button>
+                </button> */}
               </>
             )}
 
@@ -793,7 +785,7 @@ function CareRecipientForm() {
                   </div>
                 </div>
 
-                <button
+                {/* <button
                   type="submit"
                   style={{
                     display: "block",
@@ -809,9 +801,73 @@ function CareRecipientForm() {
                   }}
                 >
                   Submit
-                </button>
+                </button> */}
               </>
             )}
+
+            {/* Navigation Buttons */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginTop: "20px",
+              }}
+            >
+              {currentStep > 1 && (
+                <button
+                  onClick={handlePrevious}
+                  style={{
+                    width: "48%",
+                    padding: "10px",
+                    backgroundColor: "#5597B4",
+                    color: "#fff",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Previous
+                </button>
+              )}
+              {currentStep < 3 && (
+                <button
+                  onClick={handleNext}
+                  style={{
+                    width: currentStep > 1 ? "48%" : "100%",
+                    padding: "10px",
+                    backgroundColor: "#5597B4",
+                    color: "#fff",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Next
+                </button>
+              )}
+              {currentStep === 3 && (
+                <button
+                  type="submit"
+                  style={{
+                    width: "48%",
+                    padding: "10px",
+                    backgroundColor: "#5597B4",
+                    color: "#fff",
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Submit
+                </button>
+              )}
+            </div>
           </form>
         </div>
       )}
