@@ -72,7 +72,7 @@ function CaregiverProfiles({ profiles }) {
                 {profile.caregiver_details.dementia_type.join(", ")}
               </p>
               <p>
-                <strong>Symptoms:</strong>{" "}
+                <strong>Symptoms dealt with:</strong>{" "}
                 {profile.caregiver_details.symptoms.join(", ")}
               </p>
               <p>
