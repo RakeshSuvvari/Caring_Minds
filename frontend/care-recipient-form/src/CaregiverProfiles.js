@@ -94,7 +94,7 @@ function CaregiverProfiles({ profiles }) {
           style={{
             display: "inline-block",
             padding: "10px 20px",
-            backgroundColor: "#5597B4",
+            backgroundColor: "#0D6EFD",
             color: "#fff",
             fontSize: "16px",
             fontWeight: "bold",
@@ -120,7 +120,7 @@ function CaregiverProfiles({ profiles }) {
           style={{
             display: "inline-block",
             padding: "10px 20px",
-            backgroundColor: "#5597B4",
+            backgroundColor: "#0D6EFD",
             color: "#fff",
             fontSize: "16px",
             fontWeight: "bold",
