@@ -26,7 +26,7 @@ Database is used for saving the profiles of the care givers.
 
 To setup and run backend of the application:
 Install the packages \
-`python3 -m pip install flask psycopg2-binary numpy scikit-learn`
+`pip install -r requirements.txt`
 
 Run `app.py` to initiate API router on port `5000`.
 
