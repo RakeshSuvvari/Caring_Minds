@@ -117,7 +117,7 @@ def match_caregivers(care_recipient_data):
   matches = []
   for caregiver in caregivers:
     similarity_score = calculate_hybrid_similarity(caregiver, care_recipient_data, weights, attributes)
-    if similarity_score > 0:  # Filter out profiles with a score of 0
+    if similarity_score > 50:  # Filter out profiles with a score of 50
       matches.append((caregiver, similarity_score))
 
   # Sort caregivers by similarity score in descending order

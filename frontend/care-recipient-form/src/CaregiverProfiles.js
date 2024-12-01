@@ -23,6 +23,10 @@ function CaregiverProfiles({ profiles }) {
 
   return (
     <div>
+      {/* Total caregivers count */}
+      <div style={{ textAlign: "left", marginBottom: "20px", marginLeft: "20px", fontSize: "22px", fontWeight: "bold" }}>
+        {profiles.length} Caregiver matches found
+      </div>
       <div
         style={{
           display: "flex", // Flexbox layout for horizontal alignment
@@ -43,15 +47,34 @@ function CaregiverProfiles({ profiles }) {
               textAlign: "center",
             }}
           >
-            <img
-              src={`https://via.placeholder.com/150?text=Profile+${indexOfFirstProfile + index + 1}`}
-              alt="Profile"
-              style={{
-                width: "100%",
-                borderRadius: "10px",
-                marginBottom: "10px",
-              }}
-            />
+            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+              <img
+                src={`https://via.placeholder.com/100?text=Profile+${indexOfFirstProfile + index + 1}`}
+                alt="Profile"
+                style={{
+                  width: "100px", // Smaller size for profile picture
+                  height: "100px",
+                  borderRadius: "50%",
+                  marginRight: "10px",
+                  marginLeft: "5%",
+                }}
+              />
+              <button
+                style={{
+                  padding: "15px 15px",
+                  marginLeft: "20%",
+                  backgroundColor: "#0D6EFD",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                }}
+              >
+                Message
+              </button>
+            </div>
             <div>
               <div className="similarity-score">
                 Similarity Score: {(profile.similarity_score.toFixed(2)) + "%"}
@@ -63,10 +86,6 @@ function CaregiverProfiles({ profiles }) {
                 <strong>Language:</strong>{" "}
                 {profile.caregiver_details.language.join(", ")}
               </p>
-              {/* <p>
-                <strong>Preferred Gender:</strong>{" "}
-                {profile.caregiver_details.preferred_gender}
-              </p> */}
               <p>
                 <strong>Dementia Types:</strong>{" "}
                 {profile.caregiver_details.dementia_type.join(", ")}
