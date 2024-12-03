@@ -14,7 +14,10 @@ function Navigation() {
           padding: "10px 20px",
           borderBottom: "1px solid #ccc",
           backgroundColor: "#fff",
+          marginTop: "100px",
           width: "97%", // Ensure full width
+          top: 0,
+          position: "relative",
           zIndex: "1000", // Ensure it stays above other content
         }}
       >
