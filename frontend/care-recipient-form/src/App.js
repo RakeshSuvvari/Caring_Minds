@@ -8,10 +8,10 @@ function App() {
     <div className="App">
       <Navigation />
 
-      {/* Page Content */}
+      {/* Page Content
       <header className="App-header" style={{ textAlign: "center" }}>
         <h1>Personalized Dementia Care Information</h1>
-      </header>
+      </header> */}
 
       <div className="container">
         <CareRecipientForm />

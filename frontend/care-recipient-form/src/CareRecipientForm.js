@@ -78,8 +78,24 @@ function CareRecipientForm() {
     }
   };
 
+   // Dynamic page title based on the current step
+   const getPageTitle = () => {
+    if (currentStep <= 3) {
+      return "Personalized Dementia Care Information";
+    } else if (currentStep === 4) {
+      return "Personalized Dementia Care Results";
+    }
+    return "";
+  };
+
   return (
     <div>
+       {/* Page title */}
+       <header className="App-header" style={{ textAlign: "center" }}>
+      <h1>{getPageTitle()}</h1>
+      </header>
+
+      {/* Form steps */}
       {currentStep <= 3 && (
         <div
           style={{
