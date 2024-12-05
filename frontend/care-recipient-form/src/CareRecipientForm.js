@@ -564,7 +564,7 @@ function CareRecipientForm() {
                       "Visual hallucinations",
                       "Urinary incontinence",
                       "Sensitivity to heat or cold",
-                      "Similar handwriting",
+                      "Smaller handwriting",
                       "Dizziness or fainting",
                       "Anxiety, depression or apathy",
                     ].map((symptom) => (

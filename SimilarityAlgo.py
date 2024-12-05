@@ -108,7 +108,7 @@ def match_caregivers(care_recipient_data):
       'Tremors at rest', 'Balance issues and falls', 'Speaking slowly',
       'Gradual loss of vocabulary', 'Difficulty making correct sounds',
       'Mixing up word order or using incorrect words', 'Visual hallucinations',
-      'Urinary incontinence', 'Sensitivity to heat or cold', 'Similar handwriting',
+      'Urinary incontinence', 'Sensitivity to heat or cold', 'Smaller handwriting',
       'Dizziness or fainting', 'Anxiety, depression or apathy'
     ]
   }
