@@ -69,12 +69,12 @@ function CareRecipientForm() {
         formData,
       );
       console.log("API Response:", response.data);
-      setCaregiverProfiles(response.data); // Store profiles in state
-      setCurrentStep(4); // Go to the results page
+      setCaregiverProfiles(response.data); 
+      setCurrentStep(4); 
     } catch (error) {
       console.error("Error fetching caregiver profiles:", error);
     } finally {
-      setLoading(false); // Reset loading state
+      setLoading(false); 
     }
   };
 
@@ -119,8 +119,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between items
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -137,9 +137,9 @@ function CareRecipientForm() {
                           padding: "10px",
                           border: "2px solid",
                           borderColor:
-                            formData.gender === gender ? "#007BFF" : "#ccc", // Highlight selected
+                            formData.gender === gender ? "#007BFF" : "#ccc",
                           backgroundColor:
-                            formData.gender === gender ? "#E0F7FA" : "#fff", // Highlight background
+                            formData.gender === gender ? "#E0F7FA" : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -160,8 +160,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between items
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -177,11 +177,11 @@ function CareRecipientForm() {
                               lang,
                             )
                               ? "#007BFF"
-                              : "#ccc", // Highlight selected
+                              : "#ccc",
                             backgroundColor:
                               formData.languagePreference.includes(lang)
                                 ? "#E0F7FA"
-                                : "#fff", // Highlight background
+                                : "#fff",
                             borderRadius: "8px",
                             textAlign: "center",
                             cursor: "pointer",
@@ -202,8 +202,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between items
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -218,11 +218,11 @@ function CareRecipientForm() {
                             borderColor:
                               formData.genderPreference === preference
                                 ? "#007BFF"
-                                : "#ccc", // Highlight selected
+                                : "#ccc",
                             backgroundColor:
                               formData.genderPreference === preference
                                 ? "#E0F7FA"
-                                : "#fff", // Highlight background
+                                : "#fff",
                             borderRadius: "8px",
                             textAlign: "center",
                             cursor: "pointer",
@@ -270,8 +270,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Create two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -289,10 +289,10 @@ function CareRecipientForm() {
                           border: "2px solid",
                           borderColor: formData.dementiaType.includes(type)
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.dementiaType.includes(type)
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -316,8 +316,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -341,11 +341,11 @@ function CareRecipientForm() {
                             symptom,
                           )
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor:
                             formData.behaviouralSymptoms.includes(symptom)
                               ? "#E0F7FA"
-                              : "#fff", // Highlight background
+                              : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -365,8 +365,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -388,12 +388,12 @@ function CareRecipientForm() {
                             symptom,
                           )
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.emotionalSymptoms.includes(
                             symptom,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -413,8 +413,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -434,12 +434,12 @@ function CareRecipientForm() {
                             change,
                           )
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.lifestyleChanges.includes(
                             change,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -459,8 +459,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -482,12 +482,12 @@ function CareRecipientForm() {
                             symptom,
                           )
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.movementSymptoms.includes(
                             symptom,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -508,8 +508,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -529,12 +529,12 @@ function CareRecipientForm() {
                             symptom,
                           )
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.languageSymptoms.includes(
                             symptom,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -554,8 +554,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -575,12 +575,12 @@ function CareRecipientForm() {
                           border: "2px solid",
                           borderColor: formData.otherSymptoms.includes(symptom)
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.otherSymptoms.includes(
                             symptom,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -624,8 +624,8 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "10px", // Space between the options
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "10px",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
@@ -639,11 +639,11 @@ function CareRecipientForm() {
                           borderColor:
                             formData.dementiaStage === stage
                               ? "#007BFF"
-                              : "#ccc", // Highlight selected
+                              : "#ccc",
                           backgroundColor:
                             formData.dementiaStage === stage
                               ? "#E0F7FA"
-                              : "#fff", // Highlight background
+                              : "#fff",
                           borderRadius: "8px",
                           textAlign: "center",
                           cursor: "pointer",
@@ -668,12 +668,12 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr", // Two columns
-                      gap: "15px", // Space between items
+                      gridTemplateColumns: "1fr 1fr",
+                      gap: "15px",
                       justifyContent: "center",
                       alignItems: "center",
                       maxWidth: "800px",
-                      margin: "0 auto", // Center the grid
+                      margin: "0 auto",
                     }}
                   >
                     {[
@@ -713,12 +713,12 @@ function CareRecipientForm() {
                           border: "2px solid",
                           borderColor: formData.careType.includes(care.label)
                             ? "#007BFF"
-                            : "#ccc", // Highlight selected
+                            : "#ccc",
                           backgroundColor: formData.careType.includes(
                             care.label,
                           )
                             ? "#E0F7FA"
-                            : "#fff", // Highlight background
+                            : "#fff",
                           borderRadius: "12px",
                           cursor: "pointer",
                           display: "flex",
@@ -726,9 +726,9 @@ function CareRecipientForm() {
                           alignItems: "center",
                           justifyContent: "center",
                           boxShadow: formData.careType.includes(care.label)
-                            ? "0 4px 8px rgba(0, 123, 255, 0.3)" // Add shadow when selected
-                            : "0 4px 8px rgba(0, 0, 0, 0.1)", // Default shadow
-                          transition: "all 0.3s ease", // Smooth transition for hover and selection
+                            ? "0 4px 8px rgba(0, 123, 255, 0.3)" 
+                            : "0 4px 8px rgba(0, 0, 0, 0.1)",
+                          transition: "all 0.3s ease",
                         }}
                         onClick={() => handleBoxToggle("careType", care.label)}
                       >
@@ -756,12 +756,12 @@ function CareRecipientForm() {
                   <div
                     style={{
                       display: "grid",
-                      gridTemplateColumns: "1fr 1fr 1fr", // Three columns for each option
-                      gap: "15px", // Space between items
+                      gridTemplateColumns: "1fr 1fr 1fr",
+                      gap: "15px",
                       justifyContent: "center",
                       alignItems: "center",
                       maxWidth: "600px",
-                      margin: "0 auto", // Center the grid
+                      margin: "0 auto",
                     }}
                   >
                     {["Full Time", "Part Time", "24/7"].map(
@@ -774,11 +774,11 @@ function CareRecipientForm() {
                             borderColor:
                               formData.availability === availabilityOption
                                 ? "#007BFF"
-                                : "#ccc", // Highlight selected
+                                : "#ccc",
                             backgroundColor:
                               formData.availability === availabilityOption
                                 ? "#E0F7FA"
-                                : "#fff", // Highlight background
+                                : "#fff",
                             borderRadius: "12px",
                             cursor: "pointer",
                             display: "flex",
@@ -786,7 +786,7 @@ function CareRecipientForm() {
                             alignItems: "center",
                             fontSize: "16px",
                             fontWeight: "bold",
-                            transition: "all 0.3s ease", // Smooth transition
+                            transition: "all 0.3s ease",
                           }}
                           onClick={() =>
                             handleRadioChange(

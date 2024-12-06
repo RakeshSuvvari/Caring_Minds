@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-# Import your cosine algo function
+# Import the cosine algo function
 from SimilarityAlgo import match_caregivers
 app = Flask(__name__)
 CORS(app)

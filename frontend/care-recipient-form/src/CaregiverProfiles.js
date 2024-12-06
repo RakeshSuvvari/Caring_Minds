@@ -29,9 +29,9 @@ function CaregiverProfiles({ profiles }) {
       </div>
       <div
         style={{
-          display: "flex", // Flexbox layout for horizontal alignment
-          justifyContent: "space-around", // Space between items
-          gap: "15px", // Gap between profiles
+          display: "flex", 
+          justifyContent: "space-around", 
+          gap: "15px", 
         }}
       >
         {currentProfiles.map((profile, index) => (
@@ -41,7 +41,7 @@ function CaregiverProfiles({ profiles }) {
               border: "1px solid #ccc",
               borderRadius: "10px",
               padding: "15px",
-              width: "22%", // Ensure profiles fit in a single row
+              width: "22%", 
               backgroundColor: "#f9f9f9",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
               textAlign: "center",
@@ -52,7 +52,7 @@ function CaregiverProfiles({ profiles }) {
                 src={`https://via.placeholder.com/100?text=Profile+${indexOfFirstProfile + index + 1}`}
                 alt="Profile"
                 style={{
-                  width: "100px", // Smaller size for profile picture
+                  width: "100px", 
                   height: "100px",
                   borderRadius: "50%",
                   marginRight: "10px",

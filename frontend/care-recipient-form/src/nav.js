@@ -15,10 +15,10 @@ function Navigation() {
           borderBottom: "1px solid #ccc",
           backgroundColor: "#fff",
           marginTop: "100px",
-          width: "98%", // Ensure full width
+          width: "98%",
           top: 0,
           position: "relative",
-          zIndex: "1000", // Ensure it stays above other content
+          zIndex: "1000",
         }}
       >
         {/* Logo */}

@@ -90,13 +90,11 @@ h2 {
   color: #007BFF;
 }
 
-/* Reset margin and padding for body and html */
 body, html {
   margin: 0;
   padding: 0;
 }
 
-/* Ensure the nav bar sticks to the top */
 nav {
   margin: 0;
   padding: 0;

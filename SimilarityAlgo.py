@@ -5,7 +5,7 @@ from db import get_db_connection
 
 def create_profile_vector(profile, attributes):
   """
-  Create a vector representation of the profile for cosine similarity.
+  A vector representation of the profile for cosine similarity.
   """
   vector = []
   for attribute, options in attributes.items():
@@ -21,7 +21,7 @@ def create_profile_vector(profile, attributes):
 
 def calculate_hybrid_similarity(caregiver, care_recipient, weights, attributes):
   """
-  Compute a hybrid similarity score using exact match for prioritized attributes
+  Computing a hybrid similarity score using exact match for prioritized attributes
   and cosine similarity for lower-priority attributes.
   """
   exact_match_score = 0.0
@@ -48,10 +48,10 @@ def calculate_hybrid_similarity(caregiver, care_recipient, weights, attributes):
   recipient_vector = create_profile_vector(care_recipient, attributes)
   if np.any(caregiver_vector) and np.any(recipient_vector):  # Non-empty vectors
     cosine_sim = cosine_similarity([caregiver_vector], [recipient_vector])[0][0]
-  else:
+  else: # Else
     cosine_sim = 0.0
 
-  # Combine scores (normalized to 100%)
+  # Combined scores (normalized to 100%)
   hybrid_score = (exact_match_score / max_exact_match_score) * 0.7 + (cosine_sim * 0.3)
 
   return hybrid_score * 100
@@ -70,7 +70,7 @@ def match_caregivers(care_recipient_data):
   cursor.execute("SELECT * FROM caregivers")
   caregivers = cursor.fetchall()
 
-  # Define the column names to match table structure
+  # Columns in the table
   columns = ['id', 'gender', 'language', 'preferred_gender', 'dementia_type', 'symptoms', 
               'experience', 'care_type', 'availability']
 
@@ -140,7 +140,7 @@ def match_caregivers(care_recipient_data):
 
 def transform_json(input_json):
   """
-  Transforms the incoming JSON to match the desired format.
+  Transforms the incoming JSON to match the required output format.
   """
   # Consolidate all symptoms into a single list
   all_symptoms = (
@@ -152,7 +152,7 @@ def transform_json(input_json):
     input_json.get("otherSymptoms", [])
   )
 
-  # Map the input JSON keys to the desired output format
+  # Map the input JSON keys to the required output format
   transformed_json = {
     "gender": input_json.get("gender"),
     "language": input_json.get("languagePreference", []),
