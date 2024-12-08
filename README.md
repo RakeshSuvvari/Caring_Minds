@@ -1,5 +1,8 @@
 # Caring_Minds
 
+Application hosted on https://render.com is available till 25th December 2024. \
+View Application Here: https://caring-minds.onrender.com/ 
+***********************************************************
 To setup and run frontend of the application:
 1. Ensure the following is installed in the system:
 	- [Node.js](https://nodejs.org/)	
@@ -24,7 +27,7 @@ Database is used for saving the profiles of the care givers.
 
 ***********************************************************
 
-To setup and run backend of the application:
+To setup and run backend of the application: \
 Install the packages \
 `pip install -r requirements.txt`
 
@@ -35,14 +38,19 @@ API Hit: `http://127.0.0.1:5000/match_caregivers` \
 Sample API Input:
 ```
 {
-    "gender": "Female",
-    "language": ["English", "Spanish"],
-    "preferred_gender": "Male",
-    "dementia_type": ["Alzheimer's Disease", "Vascular Dementia"],
-    "symptoms": ["Mental decline", "Agitation", "Muscle stiffness or rigidity"],
-    "dementia_stage": "Moderate",
-    "care_type": ["Medication Management", "Daily Living Support"],
-    "availability": "Full Time"
+  "availability": "Full Time",
+  "behaviouralSymptoms": ["Mental decline"],
+  "careType": ["Medication Management", "Daily Living Support"],
+  "dementiaStage": "Moderate",
+  "dementiaType": ["Alzheimer's Disease", "Vascular Dementia"],
+  "emotionalSymptoms": ["Agitation"],
+  "gender": "Do not wish to disclose",
+  "genderPreference": "Female",
+  "languagePreference": ["English"],
+  "languageSymptoms": [],
+  "lifestyleChanges": [],
+  "movementSymptoms": ["Muscle stiffness or rigidity"],
+  "otherSymptoms": []
 }
 ```
 
@@ -54,7 +62,128 @@ Sample Output:
             "availability": "Full Time",
             "care_type": [
                 "Medication Management",
-                "Mobility Assistance"
+                "In-home Medical Care"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 47,
+            "language": [
+                "English"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness",
+                "Neglect of personal hygiene"
+            ]
+        },
+        "caregiver_id": 47,
+        "similarity_score": 86.37
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "In-home Medical Care"
+            ],
+            "dementia_type": [
+                "Vascular Dementia"
+            ],
+            "experience": 4,
+            "gender": "Female",
+            "id": 76,
+            "language": [
+                "English"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Disorientation",
+                "Agitation"
+            ]
+        },
+        "caregiver_id": 76,
+        "similarity_score": 86.04
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Medication Management",
+                "Cognitive Stimulation Activities",
+                "In-home Medical Care"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 21,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness",
+                "Disorientation",
+                "Agitation",
+                "Difficulty regulating emotions",
+                "Neglect of personal hygiene",
+                "Muscle stiffness or rigidity",
+                "Speaking slowly",
+                "Visual hallucinations"
+            ]
+        },
+        "caregiver_id": 21,
+        "similarity_score": 85.57
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Medication Management",
+                "Cognitive Stimulation Activities",
+                "In-home Medical Care"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 41,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness",
+                "Disorientation",
+                "Agitation",
+                "Difficulty regulating emotions",
+                "Neglect of personal hygiene",
+                "Muscle stiffness or rigidity",
+                "Speaking slowly",
+                "Visual hallucinations"
+            ]
+        },
+        "caregiver_id": 41,
+        "similarity_score": 85.57
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "In-home Medical Care",
+                "Daily Living Support"
             ],
             "dementia_type": [
                 "Alzheimer's Disease",
@@ -62,19 +191,45 @@ Sample Output:
             ],
             "experience": 3,
             "gender": "Female",
-            "id": 1,
+            "id": 52,
             "language": [
-                "English",
-                "Spanish"
+                "English"
             ],
-            "preferred_gender": "Male",
+            "preferred_gender": "Female",
             "symptoms": [
-                "Mental decline",
-                "Forgetfulness"
+                "Disorientation",
+                "Loss of interest in activities or people"
             ]
         },
-        "caregiver_id": 1,
-        "similarity_score": 0.8451542547285165
+        "caregiver_id": 52,
+        "similarity_score": 84.34
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "In-home Medical Care"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease",
+                "Vascular Dementia"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 61,
+            "language": [
+                "English",
+                "French"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Mental decline",
+                "Forgetfulness",
+                "Visual hallucinations"
+            ]
+        },
+        "caregiver_id": 61,
+        "similarity_score": 84.34
     },
     {
         "caregiver_details": {
@@ -84,24 +239,80 @@ Sample Output:
                 "Mobility Assistance"
             ],
             "dementia_type": [
-                "Alzheimer's Disease",
                 "Vascular Dementia"
             ],
-            "experience": 3,
+            "experience": 4,
             "gender": "Female",
-            "id": 5,
+            "id": 28,
             "language": [
                 "English",
                 "Spanish"
             ],
-            "preferred_gender": "Male",
+            "preferred_gender": "Female",
             "symptoms": [
                 "Mental decline",
-                "Forgetfulness"
+                "Impulsive behaviour",
+                "Wandering or getting lost",
+                "Difficulty combining muscle movements",
+                "Gradual loss of vocabulary",
+                "Dizziness or fainting"
             ]
         },
-        "caregiver_id": 5,
-        "similarity_score": 0.8451542547285165
+        "caregiver_id": 28,
+        "similarity_score": 83.36
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Cognitive Stimulation Activities",
+                "Specialised Therapies"
+            ],
+            "dementia_type": [
+                "Alzheimer's Disease"
+            ],
+            "experience": 5,
+            "gender": "Female",
+            "id": 26,
+            "language": [
+                "English",
+                "Spanish"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Mental decline",
+                "Compulsive behaviour",
+                "Loss of interest in activities or people",
+                "Shuffling walk or slow movement",
+                "Anxiety, depression or apathy"
+            ]
+        },
+        "caregiver_id": 26,
+        "similarity_score": 81.34
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Specialised Therapies"
+            ],
+            "dementia_type": [
+                "Frontotemporal Dementia"
+            ],
+            "experience": 3,
+            "gender": "Female",
+            "id": 11,
+            "language": [
+                "English"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Compulsive behaviour",
+                "Difficulty regulating emotions"
+            ]
+        },
+        "caregiver_id": 11,
+        "similarity_score": 75.03
     },
     {
         "caregiver_details": {
@@ -110,23 +321,46 @@ Sample Output:
                 "Daily Living Support"
             ],
             "dementia_type": [
-                "Lewy Body Dementia"
+                "Alzheimer's Disease"
+            ],
+            "experience": 3,
+            "gender": "Male",
+            "id": 8,
+            "language": [
+                "Spanish"
+            ],
+            "preferred_gender": "Female",
+            "symptoms": [
+                "Impulsive behaviour",
+                "Forgetfulness"
+            ]
+        },
+        "caregiver_id": 8,
+        "similarity_score": 72.04
+    },
+    {
+        "caregiver_details": {
+            "availability": "Full Time",
+            "care_type": [
+                "Cognitive Stimulation Activities"
+            ],
+            "dementia_type": [
+                "Vascular Dementia"
             ],
             "experience": 5,
             "gender": "Female",
-            "id": 18,
+            "id": 66,
             "language": [
-                "English",
                 "Spanish"
             ],
-            "preferred_gender": "No Preference",
+            "preferred_gender": "Female",
             "symptoms": [
-                "Gradual loss of vocabulary",
-                "Muscle stiffness or rigidity"
+                "Disorientation",
+                "Agitation"
             ]
         },
-        "caregiver_id": 18,
-        "similarity_score": 0.7262730392025629
+        "caregiver_id": 66,
+        "similarity_score": 72.04
     }
 ]
 ```
