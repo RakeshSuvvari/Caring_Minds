@@ -53,7 +53,7 @@ if __name__ == "__main__":
     time.sleep(300)  # wait for 5 minutes
 
 ## Run the Script in background
-# nohup python3 check_urls.py > check_urls.log 2>&1 &
+# nohup python3 -u check_urls.py > /home/Students/kgv34/CS5326/check_urls.log 2>&1 &
 
 ## Verify the Script is Running
 # ps aux | grep check_urls.py
